@@ -1,0 +1,49 @@
+["was", "it", "the", "best"]
+maxN = 4
+n = 0
+int[5] pq = [ , , , , ]
+int[5] qp = [ -1, -1, -1, -1, -1]
+Key[5] keys = [ , , , , ]
+
+insert(0, "was")
+    contains(0) => qp[0] != -1
+
+n = 1, i = 0
+qp[0] = 1
+pq[1] = 0
+keys[0] = was
+pq = [ None, 0, None, None, None]
+qp = [ 1, -1, -1, -1, -1]
+keys = ["was", None, None, None, None]
+
+insert(1, "it")
+    contains(1) => qp[1] != -1
+
+n = 2, i = 1
+qp[1] = 2
+pq[2] = 1
+keys[1] = it
+pq = [ None, 0, 1, None, None]
+qp = [ 1, 2, -1, -1, -1]
+keys = ["was", "it", None, None, None]
+swim(2)
+    2 > 1 and parent() > child: check(1, 2)
+        keys[pq[1]] > keys[pq[2]]
+        keys[0] > keys[1]
+        was > it
+
+exch(2, 1)
+    swap = pq[2] = 1
+    pq[2] = pq[1] = 0
+    pq[1] = swap = 1
+    
+    pq = [ None, 1, 0, None, None]
+    qp = [ 1, 2, -1, -1, -1]
+    keys = ["was", "it", None, None, None]
+    
+    qp[pq[2]] = qp[0] = 2
+    qp[pq[1]] = qp[1] = 1
+    pq = [ None, 1, 0, None, None]
+    qp = [ 2, 1, -1, -1, -1]
+    keys = ["was", "it", None, None, None]
+        
