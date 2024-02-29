@@ -23,3 +23,15 @@ Make sure that the elements to the left are always in sorted order
 
  ## Merge Sort
  
+
+# Sorting Properties
+| Algo | Inplace | Stable | Worst | Average | Best | Remark|
+|--|--|--|--|-- |--|--|
+| Selection | Y| |N^2/2| N^2/2 | N^2/2 | N Exchanges|
+| Insertion | Y | Y  | N^2| N^2/4 | N | Use for small N or Partially ordered items|
+| Shell | Y | | ? | ? | N | Tight Code |
+| Merge | | Y | NlgN | NlgN | NlgN | NlgN Guarenteed, Stable|
+| Quick | Y | | N^2/2 | 2NlgN | NlgN | NlgN probabilistic Gurantee. Fastest. Must Shuffle |
+| Quick 3 way | Y | | N^2/2 | 2NlgN | NlgN | NlgN probabilistic Gurantee. Fastest. Must Shuffle |
+| Heap | Y | | NlgN | NlgN | NlgN | NlgN Guarented, Inplace|
+
