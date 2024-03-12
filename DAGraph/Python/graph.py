@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Vertex:
     def __init__(self, name: str)-> None:
         self.name = name
@@ -31,7 +34,7 @@ class Graph:
         if to_vertex.name not in self.graph:
             self.add_vertex(to_vertex)
         edge = Edge(from_vertex, to_vertex, weight)
-        from_vertex.add_edge(edge)
+        from_vertex.edges.append(edge)
 
     def edges(self, vertex: Vertex) -> List[Edge]:
         if vertex.name not in self.graph:

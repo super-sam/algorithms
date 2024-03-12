@@ -11,10 +11,12 @@ def bfs(graph: Graph, vertex: Vertex) -> List[Vertex]:
     visited.add(vertex.name)
     while queue:
         vertex = queue.popleft()
+        result.append(vertex)
         for neighbour in graph.vertices(vertex):
             if neighbour.name in visited:
                 continue
             queue.append(neighbour)
+            visited.add(neighbour.name)
 
     return result
 
@@ -29,4 +31,4 @@ if __name__ == "__main__":
     graph.add_edge(a, c)
     graph.add_edge(b, d)
     graph.add_edge(c, d)
-    print(graph.bfs(a))  # [A, B, C, D]
+    print(bfs(graph, a))  # [A, B, C, D]
