@@ -1,5 +1,5 @@
 from graph import Graph, Vertex
-from collection import deque
+from collections import deque
 
 from typing import List
 
