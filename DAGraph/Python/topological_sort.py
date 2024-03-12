@@ -16,7 +16,7 @@ def topological_sort(dag) -> Optional[List[Vertex]]:
                 return False
             if neighbour.name in visited:
                 continue
-            if topological_sort_util(neighbour):
+            if not topological_sort_util(neighbour):
                 return False
         visiting.remove(vertex.name)
         result.append(vertex)
