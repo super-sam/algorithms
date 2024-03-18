@@ -1,0 +1,49 @@
+def find_target_sum_ways(arr, T):
+    
+    # Write your code here
+    def target_sum_util(nidx: int, curr_total: int) -> int:
+        if nidx == len(arr):
+            if curr_total == 0:
+                return 1
+            return 0
+        return target_sum_util(nidx + 1, curr_total + arr[nidx]) + target_sum_util(nidx + 1, curr_total - arr[nidx])
+    
+    return target_sum_util(0, T)
+
+def find_target_sum_ways_memo(arr, T):
+    total = sum(arr)
+    if total < abs(T):
+        return 0
+    dp = [
+        [-1 for _ in range(2*total + 1)]
+        for _ in range(len(arr) + 1)
+    ]
+
+    # Write your code here
+    def target_sum_util(nidx: int, curr_total: int) -> int:
+        if curr_total < 0:
+            print(curr_total)
+        if nidx == len(arr):
+            if curr_total == 0:
+                return 1
+            return 0
+        if dp[nidx][curr_total] != -1:
+            return dp[nidx][curr_total]
+        
+        dp[nidx][curr_total] = target_sum_util(nidx + 1, curr_total + arr[nidx]) + target_sum_util(nidx + 1, curr_total - arr[nidx])
+        return dp[nidx][curr_total]
+
+    return target_sum_util(0, T)
+
+
+if __name__ == "__main__":
+    arr = [3, 3, 1, 2]
+    T = 3
+    print(find_target_sum_ways_memo(arr, T))
+
+    # arr = [1, 1, 1, 1, 1]
+    # T = 3
+    # print(find_target_sum_ways(arr, T))
+    # arr = [1, 2, 7, 9, 981]
+    # T = 1000000000
+    # print(find_target_sum_ways(arr, T))
